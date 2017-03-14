@@ -1,0 +1,3 @@
+FunnyTrip_accueil:
+    pattern: /
+    defaults: { _controller: FunnyTripBundle:Default:index}

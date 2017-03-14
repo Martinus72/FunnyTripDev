@@ -1,0 +1,6 @@
+services:
+#    funny_trip.example:
+#        class: FunnyTrip\Bundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+
