@@ -72,6 +72,10 @@ class Annonce
    */
   private $description;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Reservation", mappedBy="annonces")
+     */
+    protected $reservations;
 
   /*
    * Constructeur
@@ -251,4 +255,20 @@ class Annonce
   {
     return $this->description;
   }
+
+    /**
+     * @return mixed
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
+    }
+
+    /**
+     * @param mixed $reservations
+     */
+    public function setReservations($reservations)
+    {
+        $this->reservations = $reservations;
+    }
 }
