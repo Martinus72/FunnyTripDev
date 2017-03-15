@@ -18,11 +18,10 @@ class Annonce
   /**
    * ID du conducteur
    *
-   * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
+   * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="annonces")
    * @ORM\JoinColumn(nullable=false)
    */
   private $user;
-
 
   /**
    * @var int
@@ -39,7 +38,6 @@ class Annonce
    * @ORM\Column(name="date", type="datetime")
    */
   private $date;
-
 
   /**
    * @var \DateTime
@@ -83,14 +81,12 @@ class Annonce
    */
   private $description;
 
-
   /*
    * Constructeur
    * */
   public function __construct()
   {
     $this->date = new \Datetime();
-
   }
 
   /**
@@ -104,11 +100,11 @@ class Annonce
   }
 
   /**
- * Set date
- *
- * @param \DateTime $date
- * @return Annonce
- */
+   * Set date
+   *
+   * @param \DateTime $date
+   * @return Annonce
+   */
   public function setDate($date)
   {
     $this->date = $date;
@@ -265,6 +261,22 @@ class Annonce
   }
 
     /**
+     * @return mixed
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
+    }
+
+    /**
+     * @param mixed $reservations
+     */
+    public function setReservations($reservations)
+    {
+        $this->reservations = $reservations;
+    }
+
+    /**
      * Set user
      *
      * @param \UserBundle\Entity\User $user
@@ -280,7 +292,7 @@ class Annonce
     /**
      * Get user
      *
-     * @return \UserBundle\Entity\User 
+     * @return \UserBundle\Entity\User
      */
     public function getUser()
     {
