@@ -18,11 +18,10 @@ class Annonce
   /**
    * ID du conducteur
    *
-   * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
+   * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="annonces")
    * @ORM\JoinColumn(nullable=false)
    */
   private $user;
-
 
   /**
    * @var int
