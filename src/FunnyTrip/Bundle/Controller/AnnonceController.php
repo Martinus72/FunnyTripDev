@@ -141,6 +141,9 @@ class AnnonceController extends Controller
   {
 
     $annonce = new Annonce();
+
+    //Atribution de l'id du conduction
+    $annonce->setUser($this->getUser());
     $form = $this->createForm('FunnyTrip\Bundle\Form\AnnonceType', $annonce);
     $form->handleRequest($request);
 

@@ -14,12 +14,20 @@ class DefaultController extends Controller
 
   }
 
-  public function trajetAction()
+
+  /**
+   * Affiche les trajets proposé par le user.
+   *
+   * @Route("/{id}", name="annonce_show")
+   * @Method("GET")
+   */
+  public function trajetAction(Annonce $annonce)
   {
-
-    return $this->render('FunnyTripBundle:Default:trajet.html.twig',
-      array('test' => 'Trajet'));
-
+    $deleteForm = $this->createDeleteForm($annonce);
+    return $this->render('FunnyTripBundle:Default:reservation.html.twig', array(
+      'annonce' => $annonce,
+      'delete_form' => $deleteForm->createView(),
+    ));
   }
 
   public function reservationAction()
