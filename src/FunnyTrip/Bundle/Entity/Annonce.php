@@ -82,11 +82,6 @@ class Annonce
    */
   private $description;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Reservation", mappedBy="annonces")
-     */
-    protected $reservations;
-
   /*
    * Constructeur
    * */

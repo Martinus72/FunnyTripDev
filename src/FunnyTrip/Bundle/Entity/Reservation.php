@@ -37,10 +37,10 @@ class Reservation
     private $users;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Annonce", inversedBy="reservations")
-     * @ORM\JoinTable(name="reservations_annonces")
+     * @ORM\ManyToOne(targetEntity="Annonce")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $annonces;
+    private $annonce;
 
     /*
      * Constructeur
