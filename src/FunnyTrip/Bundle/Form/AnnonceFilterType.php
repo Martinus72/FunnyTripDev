@@ -19,7 +19,7 @@ class AnnonceFilterType extends AbstractType
     $builder
       ->add('id', Filters\NumberFilterType::class)
       /*->add('date', Filters\DateTimeFilterType::class)*/
-      ->add('dateDepart', DateTimeType::class)
+      ->add('dateDepart', Filters\DateTimeFilterType::class)
       /*->add('dateArrivee', Filters\DateTimeFilterType::class)*/
       ->add('villeDepart', Filters\TextFilterType::class)
       ->add('villeArrivee', Filters\TextFilterType::class)

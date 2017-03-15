@@ -69,21 +69,21 @@ class AnnonceController extends Controller
         $filterData = $filterForm->getData();
         $session->set('AnnonceControllerFilter', $filterData);
       }
-      }/* else {
-        // Get filter from session
-        if ($session->has('AnnonceControllerFilter')) {
-          $filterData = $session->get('AnnonceControllerFilter');
+        } else {
+          // Get filter from session
+          if ($session->has('AnnonceControllerFilter')) {
+            $filterData = $session->get('AnnonceControllerFilter');
 
-          foreach ($filterData as $key => $filter) { //fix for entityFilterType that is loaded from session
-            if (is_object($filter)) {
-              $filterData[$key] = $queryBuilder->getEntityManager()->merge($filter);
+            foreach ($filterData as $key => $filter) { //fix for entityFilterType that is loaded from session
+              if (is_object($filter)) {
+                $filterData[$key] = $queryBuilder->getEntityManager()->merge($filter);
+              }
             }
-          }
 
-          $filterForm = $this->createForm('FunnyTrip\Bundle\Form\AnnonceFilterType', $filterData);
-          $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
+            $filterForm = $this->createForm('FunnyTrip\Bundle\Form\AnnonceFilterType', $filterData);
+            $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
+          }
         }
-      }*/
 
     return array($filterForm, $queryBuilder);
   }

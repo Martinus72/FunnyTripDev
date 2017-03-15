@@ -43,6 +43,8 @@
                         {% if is_granted("IS_AUTHENTICATED_FULLY") %}
                     <li><a class="nav-link" href="{{ path('annonce') }}"> Liste des annonces</a></li>
                     <li><a class="nav-link" href="{{ path('annonce_new') }}"> Ajouter une annonce</a></li>
+                    <li><a class="nav-link" href="{{ path('funny_trip_trajet') }}"> Mes Trajets</a></li>
+                    <li><a class="nav-link" href="{{ path('funny_trip_reservation') }}"> Mes Réservations</a></li>
                     {% else %}
                         <li><a class="nav-link" href="{{ path('annonce') }}"> Liste des annonces</a></li>
                     {% endif %}

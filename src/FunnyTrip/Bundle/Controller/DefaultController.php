@@ -14,4 +14,20 @@ class DefaultController extends Controller
 
   }
 
+  public function trajetAction()
+  {
+
+    return $this->render('FunnyTripBundle:Default:trajet.html.twig',
+      array('test' => 'Trajet'));
+
+  }
+
+  public function reservationAction()
+  {
+
+    return $this->render('FunnyTripBundle:Default:reservation.html.twig',
+      array('test' => 'Reservation'));
+
+  }
+
 }

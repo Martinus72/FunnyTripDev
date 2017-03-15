@@ -6,6 +6,14 @@ funny_trip:
     resource: "@FunnyTripBundle/Resources/config/routing.yml"
     prefix:   /
 
+funny_trip_trajet:
+    defaults: { _controller: FunnyTripBundle:Default:trajet }
+    pattern:   /mes_trajets
+
+funny_trip_reservation:
+    defaults: { _controller: FunnyTripBundle:Default:reservation }
+    pattern:   /mes_reservations
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
