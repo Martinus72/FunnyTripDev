@@ -11,6 +11,8 @@ use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\View\TwitterBootstrap3View;
 
 use FunnyTrip\Bundle\Entity\Annonce;
+use FunnyTrip\Bundle\Entity\Reservation;
+
 
 
 /**
@@ -69,21 +71,21 @@ class AnnonceController extends Controller
         $filterData = $filterForm->getData();
         $session->set('AnnonceControllerFilter', $filterData);
       }
-        } else {
-          // Get filter from session
-          if ($session->has('AnnonceControllerFilter')) {
-            $filterData = $session->get('AnnonceControllerFilter');
+    } else {
+      // Get filter from session
+      if ($session->has('AnnonceControllerFilter')) {
+        $filterData = $session->get('AnnonceControllerFilter');
 
-            foreach ($filterData as $key => $filter) { //fix for entityFilterType that is loaded from session
-              if (is_object($filter)) {
-                $filterData[$key] = $queryBuilder->getEntityManager()->merge($filter);
-              }
-            }
-
-            $filterForm = $this->createForm('FunnyTrip\Bundle\Form\AnnonceFilterType', $filterData);
-            $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
+        foreach ($filterData as $key => $filter) { //fix for entityFilterType that is loaded from session
+          if (is_object($filter)) {
+            $filterData[$key] = $queryBuilder->getEntityManager()->merge($filter);
           }
         }
+
+        $filterForm = $this->createForm('FunnyTrip\Bundle\Form\AnnonceFilterType', $filterData);
+        $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
+      }
+    }
 
     return array($filterForm, $queryBuilder);
   }
@@ -142,8 +144,9 @@ class AnnonceController extends Controller
 
     $annonce = new Annonce();
 
-    //Atribution de l'id du conduction
+    //Attribution de l'id du conduction
     $annonce->setUser($this->getUser());
+
     $form = $this->createForm('FunnyTrip\Bundle\Form\AnnonceType', $annonce);
     $form->handleRequest($request);
 

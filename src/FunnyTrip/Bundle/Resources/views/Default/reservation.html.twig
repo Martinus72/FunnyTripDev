@@ -1,7 +1,7 @@
 {% extends "FunnyTripBundle::layout.html.twig" %}
 
 {% block title %}
-    Mes réservations | {{ parent() }}
+    Mes Réservations | {{ parent() }}
 {% endblock %}
 
 {% block body %}
@@ -13,6 +13,25 @@
                 <br>
                 <h2>Mes Réservations</h2>
                 <hr/>
+
+                {% for resa in resas %}
+                    <div class="list-group">
+                        <a href="#"
+                           class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h4 class="mb-1">Réservation pour : <strong>{{ resa.annonce.villeDepart }}</strong> -> <strong>{{ resa.annonce.villeArrivee }}</strong></h4>
+                            </div>
+                            <p class="mb-1">{{ resa.annonce.dateDepart| date('l  d F  Y') }}
+                                à {{ resa.annonce.dateDepart| date('H:i') }}</p>
+                            <p><span class="badge badge-default badge-pill">{{ resa.annonce.prix }} €</span>
+                            </p>
+                        </a>
+
+                    </div>
+
+                {% endfor %}
+
+
             </div>
         </div>
     </div>
