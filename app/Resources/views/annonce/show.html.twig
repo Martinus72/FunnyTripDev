@@ -9,7 +9,7 @@
     <div id="top" class="row">
         <div class="page-header col-md-12">
             <br>
-            <h2> De <strong>{{ annonce.villeDepart }}</strong> à <strong>{{ annonce.villeArrivee }}</strong> </h2>
+            <h2> De <strong>{{ annonce.villeDepart }}</strong> à <strong>{{ annonce.villeArrivee }}</strong></h2>
 
             <hr/>
         </div>
@@ -28,9 +28,21 @@
             <p><strong>Prix par place :</strong> <h5>{{ annonce.prix }} €</h5></p>
 
         </div>
-        <div class="col-md-4"><a class="btn btn-success" href="{{ path('funnytrip_new_reservation', { 'id':  annonce.id }) }}">
-                Réserver
-            </a></div>
+        {% if is_granted("IS_AUTHENTICATED_FULLY") and not mine %}
+            <div class="col-md-4"><a class="btn btn-success"
+                                     href="{{ path('funnytrip_new_reservation', { 'id':  annonce.id }) }}">
+                    Réserver
+                </a></div>
+
+        {% elseif mine %}
+            <div class="col-md-4"></div>
+
+        {% else %}
+            <div class="col-md-4"><a class="btn btn-success disabled">
+                    Réserver
+                    <small>(Identifiez vous !)</small>
+                </a></div>
+        {% endif %}
         <div class="col-md-4">
             <p><strong>Nombre de places : </strong><h6>{{ annonce.nbPlaceMax }} place(s)</h6></p>
         </div>
@@ -45,26 +57,29 @@
 
     <div class="row embed-responsive embed-responsive-16by9" id="maps"></div>
 
-    <hr/>
+    {% if is_granted("IS_AUTHENTICATED_FULLY") and mine %}
 
+        <br>
 
-    <div class="form-group">
-        <a class="btn btn-default" href="{{ path('annonce') }}">
-            <- Retour à la liste
-        </a>
-        <a class="btn btn-primary" href="{{ path('annonce_edit', { 'id':  annonce.id }) }}">
-            Modifier
-        </a>
-        <form action="{{ path('annonce_delete', { 'id': annonce.id }) }}" method="post" style="display: inline-block">
-            <input type="hidden" name="_method" value="DELETE"/>
-            {{ form_widget(delete_form) }}
-            <button class="btn btn-danger" type="submit"
-                    onclick="return confirm('Êtes vous sûr de vouloir la supprimer ?');">
-                Supprimer
-            </button>
-        </form>
-    </div>
+        <div class="form-group">
+            <a class="btn btn-default" href="{{ path('annonce') }}">
+                <- Retour à la liste
+            </a>
+            <a class="btn btn-primary" href="{{ path('annonce_edit', { 'id':  annonce.id }) }}">
+                Modifier
+            </a>
+            <form action="{{ path('annonce_delete', { 'id': annonce.id }) }}" method="post"
+                  style="display: inline-block">
+                <input type="hidden" name="_method" value="DELETE"/>
+                {{ form_widget(delete_form) }}
+                <button class="btn btn-danger" type="submit"
+                        onclick="return confirm('Êtes vous sûr de vouloir la supprimer ?');">
+                    Supprimer
+                </button>
+            </form>
+        </div>
 
+    {% endif %}
 
     <script src="http://maps.google.com/maps/api/js?v=3&amp"></script>
     <script src="{{ asset('js/gmaps.js') }}"></script>
@@ -101,7 +116,7 @@
                 strokeWeight: 4
             });
             map.fitZoom();
-            map.setCenter((map.markers[0].position.lat()+map.markers[1].position.lat())/2, (map.markers[0].position.lng()+map.markers[1].position.lng())/2);
+            map.setCenter((map.markers[0].position.lat() + map.markers[1].position.lat()) / 2, (map.markers[0].position.lng() + map.markers[1].position.lng()) / 2);
 
         }
         ;

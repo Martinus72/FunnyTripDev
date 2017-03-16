@@ -48,27 +48,48 @@ class DefaultController extends Controller
   public function new_reservationAction()
   {
 
+    $resa_exist = false;
+
     $repository = $this->getDoctrine()->getManager()->getRepository(('FunnyTripBundle:Annonce'));
 
-    $array_annonce = $repository->findById($_GET['id']);
-
+    // Get annonce
+    $id_annonce = $_GET['id'];
+    $array_annonce = $repository->findById($id_annonce);
     $annonce = $array_annonce[0];
 
+    // Get réservations du user
+    $reservations = $this->getUser()->getReservations();
 
-    // On créer l'objet réservation
-    $resa = new Reservation();
-    $resa->setAnnonce($annonce);
-    $resa->addUser($this->getUser());
+    foreach ($reservations as $reservation) {
+      if ($reservation->getAnnonce()->getId() == $id_annonce) {
+        $resa_exist = true;
+      }
+    }
 
-    $annonce->setReservations($resa);
 
-    $em = $this->getDoctrine()->getManager();
-    $em->persist($resa);
-    $em->flush();
+    if (!$resa_exist) {
+      // On créer l'objet réservation
+      $resa = new Reservation();
+      $resa->setAnnonce($annonce);
+      $resa->addUser($this->getUser());
 
-    $showLink = $this->generateUrl('funny_trip_reservation');
-    $this->get('session')->getFlashBag()->add('success', "<a href='$showLink'>Trajet réservé</a>");
+      $annonce->setReservations($resa);
 
-    return $this->redirect('annonce/');
+      $em = $this->getDoctrine()->getManager();
+      $em->persist($resa);
+      $em->flush();
+
+      $showLink = $this->generateUrl('funny_trip_reservation');
+      $this->get('session')->getFlashBag()->add('success', "<a href='$showLink'>Trajet réservé</a>");
+
+      return $this->redirect('annonce/');
+    } else {
+      $showLink = $this->generateUrl('funny_trip_reservation');
+      $this->get('session')->getFlashBag()->add('warning', "<a href='$showLink'>Trajet déjà réservé</a>");
+
+      return $this->redirect('annonce/');
+    }
+
+
   }
 }

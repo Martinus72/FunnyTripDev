@@ -14,7 +14,6 @@ use FunnyTrip\Bundle\Entity\Annonce;
 use FunnyTrip\Bundle\Entity\Reservation;
 
 
-
 /**
  * Annonce controller.
  *
@@ -177,11 +176,17 @@ class AnnonceController extends Controller
   public function showAction(Annonce $annonce)
   {
 
+    $mine = false;
+
+    if ($annonce->getUser() == $this->getUser()) {
+      $mine = true;
+    }
 
     $deleteForm = $this->createDeleteForm($annonce);
     return $this->render('annonce/show.html.twig', array(
       'annonce' => $annonce,
       'delete_form' => $deleteForm->createView(),
+      'mine' => $mine,
     ));
   }
 
