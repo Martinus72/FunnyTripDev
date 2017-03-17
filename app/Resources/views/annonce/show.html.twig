@@ -24,21 +24,46 @@
             </p>
 
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <p><strong>Prix par place :</strong> <h5>{{ annonce.prix }} €</h5></p>
 
         </div>
         {% if is_granted("IS_AUTHENTICATED_FULLY") and not mine %}
-            <div class="col-md-4"><a class="btn btn-success"
-                                     href="{{ path('funnytrip_new_reservation', { 'id':  annonce.id }) }}">
+            <div class="col-md-5">
+                <a class="btn btn-default" href="{{ path('annonce') }}">
+                    <- Retour à la liste
+                </a>
+                <a class="btn btn-success"
+                   href="{{ path('funnytrip_new_reservation', { 'id':  annonce.id }) }}">
                     Réserver
-                </a></div>
+                </a>
+            </div>
 
-        {% elseif mine %}
-            <div class="col-md-4"></div>
+        {% elseif is_granted("IS_AUTHENTICATED_FULLY") and mine %}
+            <div class="col-md-5">
+                <a class="btn btn-default" href="{{ path('annonce') }}">
+                    <- Retour à la liste
+                </a>
+                <a class="btn btn-primary" href="{{ path('annonce_edit', { 'id':  annonce.id }) }}">
+                    Modifier
+                </a>
+                <form action="{{ path('annonce_delete', { 'id': annonce.id }) }}" method="post"
+                      style="display: inline-block">
+                    <input type="hidden" name="_method" value="DELETE"/>
+                    {{ form_widget(delete_form) }}
+                    <button class="btn btn-danger" type="submit"
+                            onclick="return confirm('Êtes vous sûr de vouloir la supprimer ?');">
+                        Supprimer
+                    </button>
+                </form>
+            </div>
 
         {% else %}
-            <div class="col-md-4"><a class="btn btn-success disabled">
+            <div class="col-md-5">
+                <a class="btn btn-default" href="{{ path('annonce') }}">
+                    <- Retour à la liste
+                </a>
+                <a class="btn btn-success disabled">
                     Réserver
                     <small>(Identifiez vous !)</small>
                 </a></div>
@@ -56,30 +81,6 @@
     </div>
 
     <div class="row embed-responsive embed-responsive-16by9" id="maps"></div>
-
-    {% if is_granted("IS_AUTHENTICATED_FULLY") and mine %}
-
-        <br>
-
-        <div class="form-group">
-            <a class="btn btn-default" href="{{ path('annonce') }}">
-                <- Retour à la liste
-            </a>
-            <a class="btn btn-primary" href="{{ path('annonce_edit', { 'id':  annonce.id }) }}">
-                Modifier
-            </a>
-            <form action="{{ path('annonce_delete', { 'id': annonce.id }) }}" method="post"
-                  style="display: inline-block">
-                <input type="hidden" name="_method" value="DELETE"/>
-                {{ form_widget(delete_form) }}
-                <button class="btn btn-danger" type="submit"
-                        onclick="return confirm('Êtes vous sûr de vouloir la supprimer ?');">
-                    Supprimer
-                </button>
-            </form>
-        </div>
-
-    {% endif %}
 
     <script src="http://maps.google.com/maps/api/js?v=3&amp"></script>
     <script src="{{ asset('js/gmaps.js') }}"></script>

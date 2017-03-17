@@ -18,6 +18,10 @@ funnytrip_new_reservation:
     defaults: { _controller: FunnyTripBundle:Default:new_reservation }
     pattern:   /new_reservations
 
+funnytrip_delete_reservation:
+    defaults: { _controller: FunnyTripBundle:Default:delete_reservation }
+    pattern:   /delete_reservations
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

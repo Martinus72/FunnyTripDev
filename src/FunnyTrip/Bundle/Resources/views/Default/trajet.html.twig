@@ -6,36 +6,34 @@
 
 {% block body %}
 
+    <div class="page-header">
+        <br>
+        <h2>Mes Annonces</h2>
+        <hr/>
+    </div>
 
     <div class="row">
-        <div class="col-md-12">
-            <div class="page-header">
+        {% for annonce in annonces %}
+            <div class="col-sm-6">
                 <br>
-                <h2>Mes Annonces</h2>
-                <hr/>
+                <div class="card">
+                    <div class="card-block">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h3 class="card-title">{{ annonce.villeDepart }} -> {{ annonce.villeArrivee }}</h3>
+                            <small>Publié le {{ annonce.date| date('d/m/Y') }}</small>
+                        </div>
 
-                {% for annonce in annonces %}
-
-                    <div class="list-group">
-                        <a href="{{ path('annonce_show', { 'id': annonce.id }) }}"
-                           class="list-group-item list-group-item-action flex-column align-items-start">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h4 class="mb-1">{{ annonce.villeDepart }} -> {{ annonce.villeArrivee }}</h4>
-                                <small>Publié le {{ annonce.date| date('d/m/Y') }}</small>
-                            </div>
-                            <p class="mb-1">{{ annonce.dateDepart| date('l  d F  Y') }}
-                                à {{ annonce.dateDepart| date('H:i') }}</p>
-                            <p><span class="badge badge-default badge-pill">{{ annonce.prix }} €</span>
-                                <small> | {{ annonce.nbPlaceMax }} siège(s)</small>
-                            </p>
-
-                        </a>
+                        <p class="card-text">Le {{ annonce.dateDepart| date('l  d F  Y') }}
+                            à {{ annonce.dateDepart| date('H:i') }}</p>
+                        <p><span class="badge badge-default badge-pill">{{ annonce.prix }} €</span>
+                            <small> | {{ annonce.nbPlaceMax }} siège(s)</small>
+                        </p>
+                        <a href="{{ path('annonce_show', { 'id': annonce.id }) }}" class="btn btn-primary">Voir</a>
+                        <a href="{{ path('annonce_edit', { 'id': annonce.id }) }}" class="btn btn-warning">Modifier</a>
                     </div>
-                {% endfor %}
-
-
+                </div>
             </div>
-        </div>
+        {% endfor %}
     </div>
 
 {% endblock %}

@@ -27,6 +27,7 @@ class DefaultController extends Controller
   {
 
     $annonces = $this->getUser()->getAnnonces();
+
     return $this->render('FunnyTripBundle:Default:trajet.html.twig', array(
       'annonces' => $annonces,
     ));
