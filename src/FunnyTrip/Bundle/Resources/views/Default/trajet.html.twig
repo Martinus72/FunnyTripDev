@@ -26,7 +26,7 @@
                         <p class="card-text">Le {{ annonce.dateDepart| date('l  d F  Y') }}
                             à {{ annonce.dateDepart| date('H:i') }}</p>
                         <p><span class="badge badge-default badge-pill">{{ annonce.prix }} €</span>
-                            <small> | {{ annonce.nbPlaceMax }} siège(s)</small>
+                            <small> | {{ annonce.nbPlaceMax - annonce.nbPlacePrise }} siège(s)</small>
                         </p>
                         <a href="{{ path('annonce_show', { 'id': annonce.id }) }}" class="btn btn-primary">Voir</a>
                         <a href="{{ path('annonce_edit', { 'id': annonce.id }) }}" class="btn btn-warning">Modifier</a>

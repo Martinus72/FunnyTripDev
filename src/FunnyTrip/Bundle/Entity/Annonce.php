@@ -75,6 +75,13 @@ class Annonce
   private $nbPlaceMax;
 
   /**
+   * @var int
+   *
+   * @ORM\Column(name="nb_place_prise", type="integer")
+   */
+  private $nbPlacePrise;
+
+  /**
    * @var string
    *
    * @ORM\Column(name="description", type="text")
@@ -87,6 +94,7 @@ class Annonce
   public function __construct()
   {
     $this->date = new \Datetime();
+    $this->nbPlacePrise = 0;
   }
 
   /**
@@ -166,29 +174,6 @@ class Annonce
   public function getVilleDepart()
   {
     return $this->villeDepart;
-  }
-
-  /**
-   * Set villeArrivee
-   *
-   * @param string $villeArrivee
-   * @return Annonce
-   */
-  public function setVilleArrivee($villeArrivee)
-  {
-    $this->villeArrivee = $villeArrivee;
-
-    return $this;
-  }
-
-  /**
-   * Get villeArrivee
-   *
-   * @return string
-   */
-  public function getVilleArrivee()
-  {
-    return $this->villeArrivee;
   }
 
   /**
@@ -298,4 +283,51 @@ class Annonce
     {
         return $this->user;
     }
+
+    /**
+     * Set villeArrivee
+     *
+     * @param string $villeArrivee
+     * @return Annonce
+     */
+    public function setVilleArrivee($villeArrivee)
+    {
+        $this->villeArrivee = $villeArrivee;
+
+        return $this;
+    }
+
+    /**
+     * Get villeArrivee
+     *
+     * @return string 
+     */
+    public function getVilleArrivee()
+    {
+        return $this->villeArrivee;
+    }
+
+    /**
+     * Set nbPlacePrise
+     *
+     * @param integer $nbPlacePrise
+     * @return Annonce
+     */
+    public function setNbPlacePrise($nbPlacePrise)
+    {
+        $this->nbPlacePrise = $nbPlacePrise;
+
+        return $this;
+    }
+
+    /**
+     * Get nbPlacePrise
+     *
+     * @return integer 
+     */
+    public function getNbPlacePrise()
+    {
+        return $this->nbPlacePrise;
+    }
+
 }

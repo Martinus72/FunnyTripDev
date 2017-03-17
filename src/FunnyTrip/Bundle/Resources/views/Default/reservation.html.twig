@@ -23,7 +23,7 @@
                             à {{ resa.annonce.dateDepart| date('H:i') }}</p>
                         <p><span class="badge badge-default badge-pill">{{ resa.annonce.prix }} €</span>
                         </p>
-                        <a href="funnytrip_delete_reservation" class="btn btn-danger">Annuler ma réservation</a>
+                        <a href="{{ path('funnytrip_delete_reservation', { 'id': resa.id }) }}" class="btn btn-danger">Annuler ma réservation</a>
                     </div>
                 </div>
             </div>

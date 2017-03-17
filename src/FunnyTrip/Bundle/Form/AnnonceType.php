@@ -25,6 +25,7 @@ class AnnonceType extends AbstractType
       ->add('villeDepart')
       ->add('villeArrivee')
       ->add('prix')
+      ->add('nbPlacePrise')
       ->add('nbPlaceMax')
       ->add('description');
   }

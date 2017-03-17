@@ -58,6 +58,12 @@ class DefaultController extends Controller
     $array_annonce = $repository->findById($id_annonce);
     $annonce = $array_annonce[0];
 
+    //Nombre de places restantes
+    $nb_places_prise = $annonce->getNbPlacePrise();
+    $nb_places_max = $annonce->getNbPlaceMax();
+
+    $nb_places = $nb_places_max - $nb_places_prise;
+
     // Get réservations du user
     $reservations = $this->getUser()->getReservations();
 
@@ -68,17 +74,19 @@ class DefaultController extends Controller
     }
 
 
-    if (!$resa_exist) {
+    if (!$resa_exist && $nb_places > 0) {
       // On créer l'objet réservation
       $resa = new Reservation();
       $resa->setAnnonce($annonce);
       $resa->addUser($this->getUser());
 
-      $annonce->setReservations($resa);
+      $annonce->setNbPlacePrise($nb_places_prise + 1);
 
       $em = $this->getDoctrine()->getManager();
       $em->persist($resa);
+      $em->persist($annonce);
       $em->flush();
+
 
       $showLink = $this->generateUrl('funny_trip_reservation');
       $this->get('session')->getFlashBag()->add('success', "<a href='$showLink'>Trajet réservé</a>");
@@ -90,7 +98,38 @@ class DefaultController extends Controller
 
       return $this->redirect('annonce/');
     }
+  }
 
+  /**
+   * Supprime réservation
+   */
+  public function delete_reservationAction()
+  {
+
+    $repository = $this->getDoctrine()->getManager()->getRepository(('FunnyTripBundle:Reservation'));
+
+    // Get reservation
+    $id_resa = $_GET['id'];
+    $array_resa = $repository->findById($id_resa);
+    $resa = $array_resa[0];
+
+    $annonce = $resa->getAnnonce();
+
+    $nb_places_prise = $annonce->getNbPlacePrise();
+
+    $annonce->setNbPlacePrise($nb_places_prise - 1);
+
+
+    // Remove réservations du user
+    $this->getUser()->removeReservation($resa);
+
+    $em = $this->getDoctrine()->getManager();
+    $em->remove($resa);
+    $em->persist($annonce);
+    $em->flush();
+
+    return $this->redirect('mes_reservations');
 
   }
+
 }

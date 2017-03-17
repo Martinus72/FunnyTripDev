@@ -182,11 +182,18 @@ class AnnonceController extends Controller
       $mine = true;
     }
 
+    //Nombre de places restantes
+    $nb_places_prise = $annonce->getNbPlacePrise();
+    $nb_places_max = $annonce->getNbPlaceMax();
+
+    $nb_places = $nb_places_max - $nb_places_prise;
+
     $deleteForm = $this->createDeleteForm($annonce);
     return $this->render('annonce/show.html.twig', array(
       'annonce' => $annonce,
       'delete_form' => $deleteForm->createView(),
       'mine' => $mine,
+      'nb_places' => $nb_places,
     ));
   }
 
