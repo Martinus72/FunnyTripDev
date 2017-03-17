@@ -28,6 +28,7 @@
                         <p><span class="badge badge-default badge-pill">{{ annonce.prix }} €</span>
                             <small> | {{ annonce.nbPlaceMax - annonce.nbPlacePrise }} siège(s)</small>
                         </p>
+
                         <a href="{{ path('annonce_show', { 'id': annonce.id }) }}" class="btn btn-primary">Voir</a>
                         <a href="{{ path('annonce_edit', { 'id': annonce.id }) }}" class="btn btn-warning">Modifier</a>
                     </div>
