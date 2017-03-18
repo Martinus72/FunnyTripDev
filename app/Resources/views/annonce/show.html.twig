@@ -29,7 +29,7 @@
             <p><strong>Prix par place :</strong> <h5>{{ annonce.prix }} €</h5></p>
 
         </div>
-        {% if is_granted("IS_AUTHENTICATED_FULLY") and not mine and nb_places > 0  %}
+        {% if is_granted("IS_AUTHENTICATED_FULLY") and not mine and nb_places > 0 %}
             <div class="col-md-5">
                 <a class="btn btn-default" href="{{ path('annonce') }}">
                     <- Retour à la liste
@@ -40,7 +40,7 @@
                 </a>
             </div>
 
-        {% elseif is_granted("IS_AUTHENTICATED_FULLY") and mine%}
+        {% elseif is_granted("IS_AUTHENTICATED_FULLY") and mine %}
             <div class="col-md-5">
                 <a class="btn btn-default" href="{{ path('annonce') }}">
                     <- Retour à la liste
@@ -130,7 +130,6 @@
             });
             map.fitZoom();
             map.setCenter((map.markers[0].position.lat() + map.markers[1].position.lat()) / 2, (map.markers[0].position.lng() + map.markers[1].position.lng()) / 2);
-
         }
         ;
 

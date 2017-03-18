@@ -17,17 +17,18 @@
                 <br>
                 <div class="card">
                     <div class="card-block">
-                        <h3 class="card-title">Réservation pour : <br> <strong>{{ resa.annonce.villeDepart }}</strong> ->
+                        <h3 class="card-title">Réservation pour : <br> <strong>{{ resa.annonce.villeDepart }}</strong>
+                            ->
                             <strong>{{ resa.annonce.villeArrivee }}</strong></h3>
                         <p class="card-text">Le {{ resa.annonce.dateDepart| date('l  d F  Y') }}
                             à {{ resa.annonce.dateDepart| date('H:i') }}</p>
                         <p><span class="badge badge-default badge-pill">{{ resa.annonce.prix }} €</span>
                         </p>
-                        <a href="{{ path('funnytrip_delete_reservation', { 'id': resa.id }) }}" class="btn btn-danger">Annuler ma réservation</a>
+                        <a href="{{ path('funnytrip_delete_reservation', { 'id': resa.id }) }}" class="btn btn-danger">Annuler
+                            ma réservation</a>
                     </div>
                 </div>
             </div>
         {% endfor %}
     </div>
-
 {% endblock %}
