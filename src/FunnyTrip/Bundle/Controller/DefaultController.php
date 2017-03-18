@@ -34,6 +34,10 @@ class DefaultController extends Controller
 
   }
 
+
+  /**
+   * Affiche les réservations du user
+   */
   public function reservationAction()
   {
     $resas = $this->getUser()->getReservations();
@@ -101,7 +105,7 @@ class DefaultController extends Controller
   }
 
   /**
-   * Supprime réservation
+   * Supprime une réservation
    */
   public function delete_reservationAction()
   {

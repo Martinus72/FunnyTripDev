@@ -4,9 +4,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>{% block title %}FunnyTrip{% endblock %}</title>
     {% block stylesheets %}
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-              integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
-              crossorigin="anonymous">
+
+
+        {# Theme Bootstrap Flatly #}
+        {#<link rel="stylesheet" href="{{ asset('css/flatly.css') }}">#}
+
+
+        {# Theme Bootstrap Yeti #}
+        <link rel="stylesheet" href="{{ asset('css/yeti.css') }}">
+
     {% endblock %}
 
     {% block javascripts %}
@@ -52,14 +58,14 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                        <li><a class="nav-link" href="{{ path('fos_user_profile_edit') }}"> {{ app.user.username }}</a></li>
+                        <li><a class="nav-link" href="{{ path('fos_user_profile_edit') }}"> {{ app.user.username }}</a>
+                        </li>
                         <li><a class="nav-link" href="{{ path('fos_user_security_logout') }}"> Déconnexion</a></li>
                     {% else %}
-                    <li><a class="nav-link" href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
-                    <li><a class="nav-link" href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                        <li><a class="nav-link" href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
+                        <li><a class="nav-link" href="{{ path('fos_user_security_login') }}">Connexion</a></li>
                     {% endif %}
                 </ul>
-
 
 
             </div>
