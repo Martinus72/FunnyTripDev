@@ -157,9 +157,7 @@ class DefaultController extends Controller
      */
     public function change_themeAction()
     {
-        $repository = $this->getDoctrine()->getManager()->getRepository(('UserBundle:User'));
 
-        // Remove réservations du user
         $user = $this->getUser();
         $theme = $user->getTheme();
 
