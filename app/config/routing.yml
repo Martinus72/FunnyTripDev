@@ -1,26 +1,37 @@
 funny_trip_annonce:
     resource: "@FunnyTripBundle/Controller/AnnonceController.php"
     type:     annotation
+    prefix:   /{_locale}/
 
 funny_trip:
     resource: "@FunnyTripBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}
+    requirements:
+        _locale: fr|en|es
 
 funny_trip_trajet:
     defaults: { _controller: FunnyTripBundle:Default:trajet }
-    pattern:   /mes_trajets
+    pattern:   /{_locale}/mes_trajets
+    requirements:
+            _locale: fr|en|es
 
 funny_trip_reservation:
     defaults: { _controller: FunnyTripBundle:Default:reservation }
-    pattern:   /mes_reservations
+    pattern:   /{_locale}/mes_reservations
+    requirements:
+            _locale: fr|en|es
 
 funnytrip_new_reservation:
     defaults: { _controller: FunnyTripBundle:Default:new_reservation }
-    pattern:   /new_reservations
+    pattern:   /{_locale}/new_reservations
+    requirements:
+            _locale: fr|en|es
 
 funnytrip_delete_reservation:
     defaults: { _controller: FunnyTripBundle:Default:delete_reservation }
-    pattern:   /delete_reservations
+    pattern:   /{_locale}/delete_reservations
+    requirements:
+            _locale: fr|en|es
 
 app:
     resource: "@AppBundle/Controller/"
@@ -31,13 +42,24 @@ fos_user_security:
 
 fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
-    prefix: /profile
+    prefix: /{_locale}/profile
+    requirements:
+            _locale: fr|en|es
+
 fos_user_register:
     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
-    prefix: /register
+    prefix: /{_locale}/register
+    requirements:
+            _locale: fr|en|es
+
 fos_user_resetting:
     resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
-    prefix: /resetting
+    prefix: /{_locale}/resetting
+    requirements:
+            _locale: fr|en|es
+
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
-    prefix: /change-password
+    prefix: /{_locale}/change-password
+    requirements:
+            _locale: fr|en|es
