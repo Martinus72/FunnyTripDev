@@ -33,6 +33,12 @@ funnytrip_delete_reservation:
     requirements:
             _locale: fr|en|es
 
+funnytrip_feed:
+    defaults: { _controller: FunnyTripBundle:Default:feed }
+    pattern:   /{_locale}/feed
+    requirements:
+            _locale: fr|en|es
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

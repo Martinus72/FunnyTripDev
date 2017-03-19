@@ -8,6 +8,7 @@ use GuzzleHttp\Psr7\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Pagerfanta\Pagerfanta;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -135,4 +136,20 @@ class DefaultController extends Controller
     return $this->redirect('mes_reservations');
 
   }
+
+  /**
+   * Génere un flux rss de toutes les annonces du site
+   *
+   * @return Response XML Feed
+   */
+  public function feedAction()
+  {
+    $annonces = $this->getDoctrine()->getRepository('FunnyTripBundle:Annonce')->findAll();
+
+    $feed = $this->get('eko_feed.feed.manager')->get('annonce');
+    $feed->addFromArray($annonces);
+
+    return new Response($feed->render('rss'));
+  }
+
 }

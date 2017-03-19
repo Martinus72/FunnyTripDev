@@ -21,7 +21,7 @@ Réserver: 'Request to Book'
 Modifier: Edit
 'Êtes vous sûr de vouloir la supprimer ?': 'Are you sure you want to delete it?'
 Supprimer: Delete
-'(Plus de place...)': 'More seat'
+'(Plus de place...)': '(No more seat)'
 '(Identifiez vous !)': 'Log in'
 'Nombre de places restantes': 'Seats Left'
 place(s): Seats
@@ -43,3 +43,5 @@ Nb place prise: Number of seats already taken
 Nb place max : Maximum number of seats
 Entre le : Between the
 et le : and the
+Flux RSS: RSS feed
+

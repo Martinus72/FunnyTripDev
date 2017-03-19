@@ -13,7 +13,7 @@ use Eko\FeedBundle\Item\Writer\ItemInterface;
  * @ORM\Table(name="annonce")
  * @ORM\Entity(repositoryClass="FunnyTrip\Bundle\Repository\AnnonceRepository")
  */
-class Annonce
+class Annonce implements ItemInterface
 {
 
   /**
@@ -334,7 +334,7 @@ class Annonce
 
   public function getFeedItemTitle()
   {
-    return "Annonce ".$this->id;
+    return $this->villeDepart." -> ".$this->villeArrivee;
   }
 
   public function getFeedItemDescription()
@@ -349,7 +349,7 @@ class Annonce
 
   public function getFeedItemLink()
   {
-    return "http://127.0.0.1:8000/fr/annonce/".$this->id;
+    return "http://127.0.0.1:8000/fr/annonce/" . $this->id;
   }
 
 

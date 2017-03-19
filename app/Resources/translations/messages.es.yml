@@ -22,7 +22,7 @@ Réserver: Reservar
 Modifier: Modificar
 'Êtes vous sûr de vouloir la supprimer ?': 'Estas seguro que deseas eliminar?'
 Supprimer: Eliminar
-'(Plus de place...)': 'Mas asientos'
+'(Plus de place...)': '(No más asiento)'
 '(Identifiez vous !)': Identificate!
 'Nombre de places restantes': 'Numero de asientos restantes'
 place(s): asiento(s)
@@ -43,3 +43,5 @@ Nb place prise: Número de plazas ya adoptadas
 Nb place max : Número máximo espacio
 Entre le : Entre el
 et le : y el
+Flux RSS: RSS feed
+
