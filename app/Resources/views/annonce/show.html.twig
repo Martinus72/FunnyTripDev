@@ -1,7 +1,7 @@
 {% extends "FunnyTripBundle::layout.html.twig" %}
 
 {% block title %}
-    Annonce {{ annonce.id }} | {{ parent() }}
+    {{ 'Annonce'|trans }} {{ annonce.id }} | {{ parent() }}
 {% endblock %}
 
 {% block body %}
@@ -9,8 +9,9 @@
     <div id="top" class="row">
         <div class="page-header col-md-12">
             <br>
-            <h2> De <strong>{{ annonce.villeDepart }}</strong> à <strong>{{ annonce.villeArrivee }}</strong>,
-                le {{ annonce.dateDepart|date('l  d F  Y à H:i') }}</h2>
+            <h2> {{ 'De'|trans }} <strong>{{ annonce.villeDepart }}</strong> à
+                <strong>{{ annonce.villeArrivee }}</strong>,
+                {{ 'le'|trans }} {{ annonce.dateDepart|date('l  d F  Y à H:i') }}</h2>
 
             <hr/>
         </div>
@@ -19,42 +20,42 @@
     <div class="row">
 
         <div class="col-md-4">
-            <p><strong>Conducteur :</strong></p>
+            <p><strong>{{ 'Conducteur'|trans }} :</strong></p>
             <p>
                 {{ annonce.user }}
             </p>
 
         </div>
         <div class="col-md-3">
-            <p><strong>Prix par place :</strong> <h5>{{ annonce.prix }} €</h5></p>
+            <p><strong>{{ 'Prix par place'|trans }} :</strong> <h5>{{ annonce.prix }} €</h5></p>
 
         </div>
         {% if is_granted("IS_AUTHENTICATED_FULLY") and not mine and nb_places > 0 %}
             <div class="col-md-5">
                 <a class="btn btn-default" href="{{ path('annonce') }}">
-                    <- Retour à la liste
+                    <- {{ 'Retour à la liste'|trans }}
                 </a>
                 <a class="btn btn-success"
                    href="{{ path('funnytrip_new_reservation', { 'id':  annonce.id }) }}">
-                    Réserver
+                    {{ 'Réserver'|trans }}
                 </a>
             </div>
 
         {% elseif is_granted("IS_AUTHENTICATED_FULLY") and mine %}
             <div class="col-md-5">
                 <a class="btn btn-default" href="{{ path('annonce') }}">
-                    <- Retour à la liste
+                    <- {{ 'Retour à la liste'|trans }}
                 </a>
                 <a class="btn btn-warning" href="{{ path('annonce_edit', { 'id':  annonce.id }) }}">
-                    Modifier
+                    {{ 'Modifier'|trans }}
                 </a>
                 <form action="{{ path('annonce_delete', { 'id': annonce.id }) }}" method="post"
                       style="display: inline-block">
                     <input type="hidden" name="_method" value="DELETE"/>
                     {{ form_widget(delete_form) }}
                     <button class="btn btn-danger" type="submit"
-                            onclick="return confirm('Êtes vous sûr de vouloir la supprimer ?');">
-                        Supprimer
+                            onclick="return confirm({{ 'Êtes vous sûr de vouloir la supprimer ?'|trans }});">
+                        {{ 'Supprimer'|trans }}
                     </button>
                 </form>
             </div>
@@ -62,29 +63,28 @@
 
             <div class="col-md-5">
                 <a class="btn btn-default" href="{{ path('annonce') }}">
-                    <- Retour à la liste
+                    <- {{ 'Retour à la liste'|trans }}
                 </a>
                 <a class="btn btn-success disabled">
-                    Réserver
-                    <small>(Plus de place...)</small>
+                    {{ 'Réserver'|trans }}
+                    <small>{{ '(Plus de place...)'|trans }}</small>
                 </a></div>
 
         {% else %}
             <div class="col-md-5">
                 <a class="btn btn-default" href="{{ path('annonce') }}">
-                    <- Retour à la liste
+                    <- {{ 'Retour à la liste'|trans }}
                 </a>
                 <a class="btn btn-success disabled">
-                    Réserver
-                    <small>(Identifiez vous !)</small>
+                    {{ 'Réserver'|trans }}
+                    <small>{{ '(Identifiez vous !)'|trans }}</small>
                 </a></div>
         {% endif %}
         <div class="col-md-4">
-            <p><strong>Nombre de places restantes: </strong><h6>{{ nb_places }}
-                place(s)</h6></p>
+            <p><strong>{{ "Nombre de places restantes"|trans }} : </strong><h6>{{ nb_places }} {{ 'place(s)'|trans }}</h6></p>
         </div>
         <div class="col-md-8">
-            <p><strong>Description :</strong></p>
+            <p><strong>{{ 'Description'|trans }} :</strong></p>
             <p>
                 {{ annonce.description }}
             </p>

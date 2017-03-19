@@ -1,7 +1,7 @@
 {% extends "FunnyTripBundle::layout.html.twig" %}
 
 {% block title %}
-    Modifier Annonce {{ annonce.id }} |{{ parent() }}
+    {{ 'Modifier Annonce'|trans }} {{ annonce.id }} |{{ parent() }}
 {% endblock %}
 
 {% block body %}
@@ -9,7 +9,7 @@
     <div id="top" class="row">
         <div class="page-header col-md-12">
             <br>
-            <h2>Modifier l'annonce</h2>
+            <h2>{{ "Modifier l'annonce"|trans }}</h2>
             <hr/>
         </div>
     </div>
@@ -36,7 +36,7 @@
             {{ form_widget(edit_form) }}
             <p>
                 <button type="submit" class="btn btn-success">
-                    Valider
+                    {{ 'Valider'|trans }}
                 </button>
             </p>
             {{ form_end(edit_form) }}

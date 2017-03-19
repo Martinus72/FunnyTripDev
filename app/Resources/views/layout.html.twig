@@ -49,12 +49,13 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                    <li><a class="nav-link" href="{{ path('annonce') }}"> Liste des annonces</a></li>
-                    <li><a class="nav-link" href="{{ path('annonce_new') }}"> Ajouter une annonce</a></li>
-                    <li><a class="nav-link" href="{{ path('funny_trip_trajet') }}"> Mes Annonces</a></li>
-                    <li><a class="nav-link" href="{{ path('funny_trip_reservation') }}"> Mes Réservations</a></li>
+                    <li><a class="nav-link" href="{{ path('annonce') }}"> {{ 'Liste des annonces'|trans }}</a></li>
+                    <li><a class="nav-link" href="{{ path('annonce_new') }}"> {{ 'Ajouter une annonce'|trans }}</a></li>
+                    <li><a class="nav-link" href="{{ path('funny_trip_trajet') }}"> {{ 'Mes Annonces'|trans }}</a></li>
+                    <li><a class="nav-link"
+                           href="{{ path('funny_trip_reservation') }}"> {{ 'Mes Réservations'|trans }}</a></li>
                     {% else %}
-                        <li><a class="nav-link" href="{{ path('annonce') }}"> Liste des annonces</a></li>
+                        <li><a class="nav-link" href="{{ path('annonce') }}"> {{ 'Liste des annonces'|trans }}</a></li>
                     {% endif %}
                     </li>
                 </ul>
@@ -62,10 +63,10 @@
                     {% if is_granted("IS_AUTHENTICATED_FULLY") %}
                         <li><a class="nav-link" href="{{ path('fos_user_profile_edit') }}"> {{ app.user.username }}</a>
                         </li>
-                        <li><a class="nav-link" href="{{ path('fos_user_security_logout') }}"> Déconnexion</a></li>
+                        <li><a class="nav-link" href="{{ path('fos_user_security_logout') }}"> {{ 'Déconnexion'|trans }}</a></li>
                     {% else %}
-                        <li><a class="nav-link" href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
-                        <li><a class="nav-link" href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                        <li><a class="nav-link" href="{{ path('fos_user_registration_register') }}">{{ 'Inscription'|trans }}</a></li>
+                        <li><a class="nav-link" href="{{ path('fos_user_security_login') }}">{{ 'Connexion'|trans }}</a></li>
                     {% endif %}
                 </ul>
 
@@ -73,9 +74,6 @@
             </div>
         </nav>
         <div>
-            <div id="menu" class="span3">
-                {#{{ render(controller( 'FunnyTripBundle:Default:menu', { 'nombre': 3 } )) }}#}
-            </div>
             <div id="content" class="span9">
                 {% block body %}
                 {% endblock %}
@@ -83,7 +81,7 @@
         </div>
         <hr>
         <footer>
-            <p><strong>Lourdelet Martin & Balança Camille & Levrard Martin</strong></p>
+            <p><strong>Lourdelet Martin & Balança Camille & Levrard Martin </strong>©</p>
         </footer>
     </div>
 </body>
