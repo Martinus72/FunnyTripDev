@@ -11,7 +11,7 @@
             <br>
             <h2> {{ 'De'|trans }} <strong>{{ annonce.villeDepart }}</strong> à
                 <strong>{{ annonce.villeArrivee }}</strong>,
-                {{ 'le'|trans }} {{ annonce.dateDepart|date('l  d F  Y à H:i') }}</h2>
+                {{ 'le'|trans }} {#{{ annonce.dateDepart|date('l  d F  Y,  H:i') }}#} {{ annonce.dateDepart|date('l  d F  Y,  H:i') }}</h2>
 
             <hr/>
         </div>

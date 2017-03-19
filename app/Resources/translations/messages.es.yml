@@ -1,35 +1,43 @@
-'Modifier Annonce': '__Modifier Annonce'
-'Modifier l''annonce': '__Modifier l''annonce'
-Valider: __Valider
-Annonces: __Annonces
-'Liste des annonces': '__Liste des annonces'
-Rechercher: __Rechercher
-Reset: __Reset
-'Publié par': '__Publié par'
-le: __le
-Le: __Le
-'à': '__à'
-'place(s) restante(s)': '__place(s) restante(s)'
-'Publier un trajet': '__Publier un trajet'
-'Publier une annonce': '__Publier une annonce'
-Ajouter: __Ajouter
-Annonce: __Annonce
-De: __De
-Conducteur: __Conducteur
-'Prix par place': '__Prix par place'
-'Retour à la liste': '__Retour à la liste'
-Réserver: __Réserver
-Modifier: __Modifier
-'Êtes vous sûr de vouloir la supprimer ?': '__Êtes vous sûr de vouloir la supprimer ?'
-Supprimer: __Supprimer
-'(Plus de place...)': '__(Plus de place...)'
-'(Identifiez vous !)': '__(Identifiez vous !)'
-'Nombre de places restantes': '__Nombre de places restantes'
-place(s): __place(s)
-Description: __Description
-'Ajouter une annonce': '__Ajouter une annonce'
-'Mes Annonces': '__Mes Annonces'
-'Mes Réservations': '__Mes Réservations'
-Déconnexion: __Déconnexion
-Inscription: __Inscription
-Connexion: __Connexion
+'Modifier Annonce': 'Modificar Anuncio'
+'Modifier l''annonce': 'Modificar el anuncio'
+Valider: Validar
+Annonces: Anuncios
+'Liste des annonces': 'Lista de Anuncios'
+Rechercher: Buscar
+Reset: Reset
+'Publié par': 'Publicado por'
+le: el
+Le: El
+'à': a
+'place(s) restante(s)': 'asientos disponibles'
+'Publier un trajet': 'Publicar el trayecto'
+'Publier une annonce': 'Publicar en anuncio'
+Ajouter: Agregar
+Annonce: Anuncio
+De: De
+Conducteur: Conductor
+'Prix par place': 'Precio por asiento'
+'Retour à la liste': 'Volver a la lista'
+Réserver: Reservar
+Modifier: Modificar
+'Êtes vous sûr de vouloir la supprimer ?': 'Estas seguro que deseas eliminar?'
+Supprimer: Eliminar
+'(Plus de place...)': 'Mas asientos'
+'(Identifiez vous !)': Identificate!
+'Nombre de places restantes': 'Numero de asientos restantes'
+place(s): asiento(s)
+Description: Descripción
+'Ajouter une annonce': 'Agregar un anuncio'
+'Mes Annonces': 'Mis Anuncios'
+'Mes Réservations': 'Mis Reservaciones'
+Déconnexion: Desconectarse
+Inscription: Inscripcion
+Connexion: 'Iniciar sesión'
+Langues: Idiomas
+Voir: Ver
+Date depart: Fecha de salida
+Ville depart: Ciudad de salida
+Ville arrivee: Ciudad de destino
+Prix: Precio
+Nb place prise: Número de plazas ya adoptadas
+Nb place max : Número máximo espacio

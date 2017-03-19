@@ -107,7 +107,7 @@
                             <small>
                                 | {{ annonce.nbPlaceMax - annonce.nbPlacePrise }} {{ 'place(s) restante(s)'|trans }}</small>
                         </p>
-                        <a href="{{ path('annonce_show', { 'id': annonce.id }) }}" class="btn btn-primary">Voir</a>
+                        <a href="{{ path('annonce_show', { 'id': annonce.id }) }}" class="btn btn-primary">{{ 'Voir'|trans }}</a>
                     </div>
                 </div>
             </div>

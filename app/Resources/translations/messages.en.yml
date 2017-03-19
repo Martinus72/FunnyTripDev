@@ -1,35 +1,43 @@
-'Modifier Annonce': 'Edit'
-'Modifier l''annonce': 'Edit the offer'
-Valider: Validte
-Annonces: Offers
-'Liste des annonces': 'List Offers'
+'Modifier Annonce': 'Edit a ride'
+Valider: Save
+Annonces: Ride
+'Liste des annonces': 'List Ride'
 Rechercher: Search
 Reset: Reset
 'Publié par': 'Published by'
 le: the
 Le: The
-'à': 'at'
+'à': at
 'place(s) restante(s)': 'Remaining Seat'
-'Publier un trajet': '__Publier un trajet'
-'Publier une annonce': '__Publier une annonce'
-Ajouter: __Ajouter
-Annonce: __Annonce
-De: __De
-Conducteur: __Conducteur
-'Prix par place': '__Prix par place'
-'Retour à la liste': '__Retour à la liste'
-Réserver: __Réserver
-Modifier: __Modifier
-'Êtes vous sûr de vouloir la supprimer ?': '__Êtes vous sûr de vouloir la supprimer ?'
-Supprimer: __Supprimer
-'(Plus de place...)': '__(Plus de place...)'
-'(Identifiez vous !)': '__(Identifiez vous !)'
-'Nombre de places restantes': '__Nombre de places restantes'
-place(s): __place(s)
-Description: __Description
-'Ajouter une annonce': '__Ajouter une annonce'
-'Mes Annonces': '__Mes Annonces'
-'Mes Réservations': '__Mes Réservations'
-Déconnexion: __Déconnexion
-Inscription: __Inscription
-Connexion: __Connexion
+'Publier un trajet': 'Offer a ride'
+'Publier une annonce': 'Offer a ride'
+Ajouter: Add
+Annonce: Notice
+De: To
+Conducteur: Driver
+'Prix par place': 'Price per seat'
+'Retour à la liste': 'Back to the list'
+Réserver: 'Request to Book'
+Modifier: Edit
+'Êtes vous sûr de vouloir la supprimer ?': 'Are you sure you want to delete it?'
+Supprimer: Delete
+'(Plus de place...)': 'More seat'
+'(Identifiez vous !)': 'Log in'
+'Nombre de places restantes': 'Seats Left'
+place(s): Seats
+Description: Details
+'Ajouter une annonce': 'Offer a ride'
+'Mes Annonces': 'My Rides'
+'Mes Réservations': Bookings
+Déconnexion: 'Log out'
+Inscription: 'Sign Up'
+Connexion: 'Log in'
+Langues: Languages
+'Modifier l''annonce': 'Edit a ride'
+Voir: View
+Date depart: Date
+Ville depart: City Start
+Ville arrivee: City Arrival
+Prix: Price
+Nb place prise: Number of seats already taken
+Nb place max : Maximum number of seats

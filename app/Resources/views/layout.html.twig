@@ -61,13 +61,22 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                        <li><a class="nav-link" href="{{ path('fos_user_profile_edit') }}"> {{ app.user.username }}</a>
-                        </li>
+                        <li><a class="nav-link" href="{{ path('fos_user_profile_edit') }}"> {{ app.user.username }}</a></li>
                         <li><a class="nav-link" href="{{ path('fos_user_security_logout') }}"> {{ 'Déconnexion'|trans }}</a></li>
                     {% else %}
                         <li><a class="nav-link" href="{{ path('fos_user_registration_register') }}">{{ 'Inscription'|trans }}</a></li>
                         <li><a class="nav-link" href="{{ path('fos_user_security_login') }}">{{ 'Connexion'|trans }}</a></li>
                     {% endif %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ 'Langues'|trans }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="http://127.0.0.1:8000/fr/">Français</a>
+                            <a class="dropdown-item" href="http://127.0.0.1:8000/en/">English</a>
+                            <a class="dropdown-item" href="http://127.0.0.1:8000/es/">Español</a>
+                        </div>
+                    </li>
                 </ul>
 
 
