@@ -135,5 +135,4 @@ class DefaultController extends Controller
     return $this->redirect('mes_reservations');
 
   }
-
 }

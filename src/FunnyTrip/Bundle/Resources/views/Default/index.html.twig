@@ -1,20 +1,19 @@
 {% extends "FunnyTripBundle::layout.html.twig" %}
 {% block title %}
-    Accueil - {{ parent() }}
+    {{ 'Accueil'|trans }} - {{ parent() }}
 {% endblock %}
 
 {% block body %}
 
     <div class="jumbotron">
         <h1 class="display-3">FunnyTrip</h1>
-        <p class="lead">Voyagez, Rencontrez, Découvrez et Economisez !</p>
+        <p class="lead">{{ 'Voyagez, Rencontrez, Découvrez et Economisez !'|trans }}</p>
         <hr class="my-4">
-        <p>Ce site internet a été créé dans le cadre de notre cours de Développement IHM & Client-Serveur (X6IM020).</p>
+        <p>{{ 'Ce site internet a été créé dans le cadre de notre cours de Développement IHM & Client-Serveur (X6IM020).'|trans }}</p>
         <p class="lead">
-            <a class="btn btn-primary btn-lg" href="{{ path('annonce') }}" role="button">Voir les annonces</a>
+            <a class="btn btn-primary btn-lg" href="{{ path('annonce') }}"
+               role="button">{{ 'Voir les annonces'|trans }}</a>
         </p>
     </div>
-
-
 {% endblock %}
 

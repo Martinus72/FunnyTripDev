@@ -4,13 +4,12 @@
     {% if error %}
         <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
     {% endif %}
-
     <form action="{{ path("fos_user_security_check") }}" method="post">
 
 
         <!-- LOGIN FORM -->
         <div class="text-center" style="padding:50px 0">
-            <div class="logo"><h3>Connexion</h3></div>
+            <div class="logo"><h3>{{ 'Connexion' |trans}}</h3></div>
             <hr>
             <!-- Main Form -->
             <div class="login-form-1">
@@ -23,7 +22,7 @@
                                        class="sr-only"><strong>{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}
                                         :</strong></label>
                                 <input type="text" class="form-control" id="username" name="_username"
-                                       value="{{ last_username }}" placeholder="Username"
+                                       value="{{ last_username }}" placeholder="{{ 'Pseudo'|trans }}"
                                        required="required"/>
                             </div>
                             <div class="form-group">
@@ -31,7 +30,7 @@
                                        class="sr-only"><strong>{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}
                                         :</strong></label>
                                 <input type="password" class="form-control" id="password" name="_password"
-                                       placeholder="Password" required="required"/>
+                                       placeholder="{{ 'Mot de passe'|trans }}" required="required"/>
                             </div>
                             <div class="form-group login-group-checkbox">
                                 <input type="checkbox" id="remember_me" name="_remember_me" value="on">
@@ -42,7 +41,7 @@
                                value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}"/></div>
                     <div class="etc-login-form">
                         <br>
-                        <p>Nouveau ? <a href="{{ path('fos_user_registration_register') }}">Inscrivez vous !</a></p>
+                        <p>{{ 'Nouveau ?'|trans }} <a href="{{ path('fos_user_registration_register') }}">{{ 'Inscrivez vous !'|trans }}</a></p>
                     </div>
                 </form>
             </div>
