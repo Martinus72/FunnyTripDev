@@ -1,14 +1,14 @@
 {% extends "FunnyTripBundle::layout.html.twig" %}
 
 {% block title %}
-    Mes Réservations | {{ parent() }}
+    {{ 'Mes Réservations'|trans }} | {{ parent() }}
 {% endblock %}
 
 {% block body %}
 
     <div class="page-header">
         <br>
-        <h2>Mes Réservations</h2>
+        <h2>{{ 'Mes Réservations'|trans }}</h2>
         <hr/>
     </div>
     <div class="row">
@@ -17,15 +17,14 @@
                 <br>
                 <div class="card">
                     <div class="card-block">
-                        <h3 class="card-title">Réservation pour : <br> <strong>{{ resa.annonce.villeDepart }}</strong>
+                        <h3 class="card-title">{{ 'Réservation pour :'|trans }} <br> <strong>{{ resa.annonce.villeDepart }}</strong>
                             ->
                             <strong>{{ resa.annonce.villeArrivee }}</strong></h3>
-                        <p class="card-text">Le {{ resa.annonce.dateDepart| date('l  d F  Y') }}
-                            à {{ resa.annonce.dateDepart| date('H:i') }}</p>
+                        <p class="card-text">{{ 'Le'|trans }} {{ resa.annonce.dateDepart| date('l  d F  Y') }}
+                            {{ 'à'|trans }} {{ resa.annonce.dateDepart| date('H:i') }}</p>
                         <p><span class="badge badge-default badge-pill">{{ resa.annonce.prix }} €</span>
                         </p>
-                        <a href="{{ path('funnytrip_delete_reservation', { 'id': resa.id }) }}" class="btn btn-danger">Annuler
-                            ma réservation</a>
+                        <a href="{{ path('funnytrip_delete_reservation', { 'id': resa.id }) }}" class="btn btn-danger">{{ 'Annuler ma réservation'|trans }}</a>
                     </div>
                 </div>
             </div>
