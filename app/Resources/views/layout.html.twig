@@ -5,13 +5,13 @@
     <title>{% block title %}FunnyTrip{% endblock %}</title>
     {% block stylesheets %}
 
-
-        {# Theme Bootstrap Flatly #}
-        {#<link rel="stylesheet" href="{{ asset('css/flatly.css') }}">#}
-
-
-        {# Theme Bootstrap Yeti #}
-        <link rel="stylesheet" href="{{ asset('css/yeti.css') }}">
+        {% if is_granted("IS_AUTHENTICATED_FULLY") and app.user.theme == 0 %}
+            {# Theme Bootstrap Flatly #}
+            <link rel="stylesheet" href="{{ asset('css/flatly.css') }}">
+        {% else %}
+            {# Theme Bootstrap Yeti #}
+            <link rel="stylesheet" href="{{ asset('css/yeti.css') }}">
+        {% endif %}
 
         <link rel="icon" type="image/png" href="{{ asset('images/sportive-car.png') }}">
 
@@ -61,20 +61,31 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                        <li><a class="nav-link" href="{{ path('fos_user_profile_edit') }}"> {{ app.user.username }}</a></li>
-                        <li><a class="nav-link" href="{{ path('fos_user_security_logout') }}"> {{ 'Déconnexion'|trans }}</a></li>
+                        <li><a class="nav-link" href="{{ path('fos_user_profile_edit') }}"> {{ app.user.username }}</a>
+                        </li>
+                        <li><a class="nav-link"
+                               href="{{ path('fos_user_security_logout') }}"> {{ 'Déconnexion'|trans }}</a></li>
                     {% else %}
-                        <li><a class="nav-link" href="{{ path('fos_user_registration_register') }}">{{ 'Inscription'|trans }}</a></li>
-                        <li><a class="nav-link" href="{{ path('fos_user_security_login') }}">{{ 'Connexion'|trans }}</a></li>
+                        <li><a class="nav-link"
+                               href="{{ path('fos_user_registration_register') }}">{{ 'Inscription'|trans }}</a></li>
+                        <li><a class="nav-link" href="{{ path('fos_user_security_login') }}">{{ 'Connexion'|trans }}</a>
+                        </li>
                     {% endif %}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ 'Langues'|trans }}
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ 'Parametres'|trans }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="http://127.0.0.1:8000/fr/">Français</a>
-                            <a class="dropdown-item" href="http://127.0.0.1:8000/en/">English</a>
-                            <a class="dropdown-item" href="http://127.0.0.1:8000/es/">Español</a>
+                            <ul>
+                                <li><a class="dropdown-item" href="http://127.0.0.1:8000/fr/">Français</a></li>
+                                <li><a class="dropdown-item" href="http://127.0.0.1:8000/en/">English</a></li>
+                                <li><a class="dropdown-item" href="http://127.0.0.1:8000/es/">Español</a></li>
+                            </ul>
+                            {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                                <a class="dropdown-item"
+                                   href="{{ path('funnytrip_change_theme') }}">{{ 'Changer Thème'|trans }}</a>
+                            {% endif %}
                         </div>
                     </li>
                 </ul>
@@ -90,7 +101,9 @@
         </div>
         <hr>
         <footer>
-            <p><strong>Lourdelet Martin & Balança Camille & Levrard Martin </strong>© | <strong><a class="" href="{{ path('funnytrip_feed') }}">{{ 'Flux RSS'|trans }}</a></strong></p>
+            <p><strong>Lourdelet Martin & Balança Camille & Levrard Martin </strong>© | <strong><a class=""
+                                                                                                   href="{{ path('funnytrip_feed') }}">{{ 'Flux RSS'|trans }}</a></strong>
+            </p>
         </footer>
     </div>
 </body>

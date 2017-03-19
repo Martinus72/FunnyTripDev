@@ -12,144 +12,167 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
-  public function indexAction()
-  {
+    public function indexAction()
+    {
 
-    return $this->render('FunnyTripBundle:Default:index.html.twig',
-      array('nom' => 'Home'));
+        return $this->render('FunnyTripBundle:Default:index.html.twig',
+            array('nom' => 'Home'));
 
-  }
-
-
-  /**
-   * Affiche les trajets déposé par le user.
-   */
-  public function trajetAction()
-  {
-
-    $annonces = $this->getUser()->getAnnonces();
-
-    return $this->render('FunnyTripBundle:Default:trajet.html.twig', array(
-      'annonces' => $annonces,
-    ));
-
-  }
-
-
-  /**
-   * Affiche les réservations du user
-   */
-  public function reservationAction()
-  {
-    $resas = $this->getUser()->getReservations();
-
-    return $this->render('FunnyTripBundle:Default:reservation.html.twig', array(
-      'resas' => $resas,
-    ));
-  }
-
-  /**
-   * Créer une nouvelle réservation
-   */
-  public function new_reservationAction()
-  {
-
-    $resa_exist = false;
-
-    $repository = $this->getDoctrine()->getManager()->getRepository(('FunnyTripBundle:Annonce'));
-
-    // Get annonce
-    $id_annonce = $_GET['id'];
-    $array_annonce = $repository->findById($id_annonce);
-    $annonce = $array_annonce[0];
-
-    //Nombre de places restantes
-    $nb_places_prise = $annonce->getNbPlacePrise();
-    $nb_places_max = $annonce->getNbPlaceMax();
-
-    $nb_places = $nb_places_max - $nb_places_prise;
-
-    // Get réservations du user
-    $reservations = $this->getUser()->getReservations();
-
-    foreach ($reservations as $reservation) {
-      if ($reservation->getAnnonce()->getId() == $id_annonce) {
-        $resa_exist = true;
-      }
     }
 
 
-    if (!$resa_exist && $nb_places > 0) {
-      // On créer l'objet réservation
-      $resa = new Reservation();
-      $resa->setAnnonce($annonce);
-      $resa->addUser($this->getUser());
+    /**
+     * Affiche les trajets déposé par le user.
+     */
+    public function trajetAction()
+    {
 
-      $annonce->setNbPlacePrise($nb_places_prise + 1);
+        $annonces = $this->getUser()->getAnnonces();
 
-      $em = $this->getDoctrine()->getManager();
-      $em->persist($resa);
-      $em->persist($annonce);
-      $em->flush();
+        return $this->render('FunnyTripBundle:Default:trajet.html.twig', array(
+            'annonces' => $annonces,
+        ));
 
-
-      $showLink = $this->generateUrl('funny_trip_reservation');
-      $this->get('session')->getFlashBag()->add('success', "<a href='$showLink'>Trajet réservé</a>");
-
-      return $this->redirect('annonce/');
-    } else {
-      $showLink = $this->generateUrl('funny_trip_reservation');
-      $this->get('session')->getFlashBag()->add('warning', "<a href='$showLink'>Trajet déjà réservé</a>");
-
-      return $this->redirect('annonce/');
     }
-  }
-
-  /**
-   * Supprime une réservation
-   */
-  public function delete_reservationAction()
-  {
-
-    $repository = $this->getDoctrine()->getManager()->getRepository(('FunnyTripBundle:Reservation'));
-
-    // Get reservation
-    $id_resa = $_GET['id'];
-    $array_resa = $repository->findById($id_resa);
-    $resa = $array_resa[0];
-
-    $annonce = $resa->getAnnonce();
-
-    $nb_places_prise = $annonce->getNbPlacePrise();
-
-    $annonce->setNbPlacePrise($nb_places_prise - 1);
 
 
-    // Remove réservations du user
-    $this->getUser()->removeReservation($resa);
+    /**
+     * Affiche les réservations du user
+     */
+    public function reservationAction()
+    {
+        $resas = $this->getUser()->getReservations();
 
-    $em = $this->getDoctrine()->getManager();
-    $em->remove($resa);
-    $em->persist($annonce);
-    $em->flush();
+        return $this->render('FunnyTripBundle:Default:reservation.html.twig', array(
+            'resas' => $resas,
+        ));
+    }
 
-    return $this->redirect('mes_reservations');
+    /**
+     * Créer une nouvelle réservation
+     */
+    public function new_reservationAction()
+    {
 
-  }
+        $resa_exist = false;
 
-  /**
-   * Génere un flux rss de toutes les annonces du site
-   *
-   * @return Response XML Feed
-   */
-  public function feedAction()
-  {
-    $annonces = $this->getDoctrine()->getRepository('FunnyTripBundle:Annonce')->findAll();
+        $repository = $this->getDoctrine()->getManager()->getRepository(('FunnyTripBundle:Annonce'));
 
-    $feed = $this->get('eko_feed.feed.manager')->get('annonce');
-    $feed->addFromArray($annonces);
+        // Get annonce
+        $id_annonce = $_GET['id'];
+        $array_annonce = $repository->findById($id_annonce);
+        $annonce = $array_annonce[0];
 
-    return new Response($feed->render('rss'));
-  }
+        //Nombre de places restantes
+        $nb_places_prise = $annonce->getNbPlacePrise();
+        $nb_places_max = $annonce->getNbPlaceMax();
 
+        $nb_places = $nb_places_max - $nb_places_prise;
+
+        // Get réservations du user
+        $reservations = $this->getUser()->getReservations();
+
+        foreach ($reservations as $reservation) {
+            if ($reservation->getAnnonce()->getId() == $id_annonce) {
+                $resa_exist = true;
+            }
+        }
+
+
+        if (!$resa_exist && $nb_places > 0) {
+            // On créer l'objet réservation
+            $resa = new Reservation();
+            $resa->setAnnonce($annonce);
+            $resa->addUser($this->getUser());
+
+            $annonce->setNbPlacePrise($nb_places_prise + 1);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($resa);
+            $em->persist($annonce);
+            $em->flush();
+
+
+            $showLink = $this->generateUrl('funny_trip_reservation');
+            $this->get('session')->getFlashBag()->add('success', "<a href='$showLink'>Trajet réservé</a>");
+
+            return $this->redirect('annonce/');
+        } else {
+            $showLink = $this->generateUrl('funny_trip_reservation');
+            $this->get('session')->getFlashBag()->add('warning', "<a href='$showLink'>Trajet déjà réservé</a>");
+
+            return $this->redirect('annonce/');
+        }
+    }
+
+    /**
+     * Supprime une réservation
+     */
+    public function delete_reservationAction()
+    {
+
+        $repository = $this->getDoctrine()->getManager()->getRepository(('FunnyTripBundle:Reservation'));
+
+        // Get reservation
+        $id_resa = $_GET['id'];
+        $array_resa = $repository->findById($id_resa);
+        $resa = $array_resa[0];
+
+        $annonce = $resa->getAnnonce();
+
+        $nb_places_prise = $annonce->getNbPlacePrise();
+
+        $annonce->setNbPlacePrise($nb_places_prise - 1);
+
+
+        // Remove réservations du user
+        $this->getUser()->removeReservation($resa);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($resa);
+        $em->persist($annonce);
+        $em->flush();
+
+        return $this->redirect('mes_reservations');
+
+    }
+
+    /**
+     * Génere un flux rss de toutes les annonces du site
+     *
+     * @return Response XML Feed
+     */
+    public function feedAction()
+    {
+        $annonces = $this->getDoctrine()->getRepository('FunnyTripBundle:Annonce')->findAll();
+
+        $feed = $this->get('eko_feed.feed.manager')->get('annonce');
+        $feed->addFromArray($annonces);
+
+        return new Response($feed->render('rss'));
+    }
+
+    /**
+     * Change le thème
+     */
+    public function change_themeAction()
+    {
+        $repository = $this->getDoctrine()->getManager()->getRepository(('UserBundle:User'));
+
+        // Remove réservations du user
+        $user = $this->getUser();
+        $theme = $user->getTheme();
+
+        if ($theme == 0) {
+            $this->getUser()->setTheme(1);
+        } else {
+            $this->getUser()->setTheme(0);
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
+
+        return $this->render('FunnyTripBundle:Default:index.html.twig');
+    }
 }

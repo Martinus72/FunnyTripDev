@@ -39,6 +39,12 @@ funnytrip_feed:
     requirements:
             _locale: fr|en|es
 
+funnytrip_change_theme:
+    defaults: { _controller: FunnyTripBundle:Default:change_theme }
+    pattern:   /{_locale}/change_theme
+    requirements:
+            _locale: fr|en|es
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
