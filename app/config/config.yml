@@ -75,7 +75,7 @@ fos_user:
 eko_feed:
     feeds:
         annonce:
-            title:       'Mes annonces/post'
-            description: 'Ns dernière annonces'
+            title:       'FunnyTrip - Voyagez, Rencontrez, Découvrez et Economisez !'
+            description: 'Nos dernière annonces'
             link:        'http://127.0.0.1:8000/'
             encoding:    'utf-8'
