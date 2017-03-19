@@ -4,6 +4,7 @@ namespace FunnyTrip\Bundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Eko\FeedBundle\Item\Writer\ItemInterface;
 
 
 /**
@@ -245,89 +246,111 @@ class Annonce
     return $this->description;
   }
 
-    /**
-     * @return mixed
-     */
-    public function getReservations()
-    {
-        return $this->reservations;
-    }
+  /**
+   * @return mixed
+   */
+  public function getReservations()
+  {
+    return $this->reservations;
+  }
 
-    /**
-     * @param mixed $reservations
-     */
-    public function setReservations($reservations)
-    {
-        $this->reservations = $reservations;
-    }
+  /**
+   * @param mixed $reservations
+   */
+  public function setReservations($reservations)
+  {
+    $this->reservations = $reservations;
+  }
 
-    /**
-     * Set user
-     *
-     * @param \UserBundle\Entity\User $user
-     * @return Annonce
-     */
-    public function setUser(\UserBundle\Entity\User $user)
-    {
-        $this->user = $user;
+  /**
+   * Set user
+   *
+   * @param \UserBundle\Entity\User $user
+   * @return Annonce
+   */
+  public function setUser(\UserBundle\Entity\User $user)
+  {
+    $this->user = $user;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get user
-     *
-     * @return \UserBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
+  /**
+   * Get user
+   *
+   * @return \UserBundle\Entity\User
+   */
+  public function getUser()
+  {
+    return $this->user;
+  }
 
-    /**
-     * Set villeArrivee
-     *
-     * @param string $villeArrivee
-     * @return Annonce
-     */
-    public function setVilleArrivee($villeArrivee)
-    {
-        $this->villeArrivee = $villeArrivee;
+  /**
+   * Set villeArrivee
+   *
+   * @param string $villeArrivee
+   * @return Annonce
+   */
+  public function setVilleArrivee($villeArrivee)
+  {
+    $this->villeArrivee = $villeArrivee;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get villeArrivee
-     *
-     * @return string 
-     */
-    public function getVilleArrivee()
-    {
-        return $this->villeArrivee;
-    }
+  /**
+   * Get villeArrivee
+   *
+   * @return string
+   */
+  public function getVilleArrivee()
+  {
+    return $this->villeArrivee;
+  }
 
-    /**
-     * Set nbPlacePrise
-     *
-     * @param integer $nbPlacePrise
-     * @return Annonce
-     */
-    public function setNbPlacePrise($nbPlacePrise)
-    {
-        $this->nbPlacePrise = $nbPlacePrise;
+  /**
+   * Set nbPlacePrise
+   *
+   * @param integer $nbPlacePrise
+   * @return Annonce
+   */
+  public function setNbPlacePrise($nbPlacePrise)
+  {
+    $this->nbPlacePrise = $nbPlacePrise;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get nbPlacePrise
-     *
-     * @return integer 
-     */
-    public function getNbPlacePrise()
-    {
-        return $this->nbPlacePrise;
-    }
+  /**
+   * Get nbPlacePrise
+   *
+   * @return integer
+   */
+  public function getNbPlacePrise()
+  {
+    return $this->nbPlacePrise;
+  }
+
+
+  public function getFeedItemTitle()
+  {
+    return "Annonce ".$this->id;
+  }
+
+  public function getFeedItemDescription()
+  {
+    return $this->description;
+  }
+
+  public function getFeedItemPubDate()
+  {
+    return $this->date;
+  }
+
+  public function getFeedItemLink()
+  {
+    return "http://127.0.0.1:8000/fr/annonce/".$this->id;
+  }
+
 
 }
