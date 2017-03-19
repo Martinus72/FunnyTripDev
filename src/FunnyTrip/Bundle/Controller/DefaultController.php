@@ -155,7 +155,7 @@ class DefaultController extends Controller
   /**
    * Change le thème
    */
-  public function change_themeAction(Request $request)
+  public function change_themeAction()
   {
 
     $user = $this->getUser();
@@ -171,6 +171,6 @@ class DefaultController extends Controller
     $em->persist($user);
     $em->flush();
 
-    return $this->redirect($request->getUri());
+    return $this->render('FunnyTripBundle:Default:index.html.twig');
   }
 }

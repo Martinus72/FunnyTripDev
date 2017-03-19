@@ -77,11 +77,11 @@
                             {{ 'Paramètres'|trans }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <ul>
-                                <li><a class="dropdown-item" href="http://127.0.0.1:8000/fr/">Français</a></li>
-                                <li><a class="dropdown-item" href="http://127.0.0.1:8000/en/">English</a></li>
-                                <li><a class="dropdown-item" href="http://127.0.0.1:8000/es/">Español</a></li>
-                            </ul>
+
+                            <a class="dropdown-item" href="http://127.0.0.1:8000/fr/">Français</a>
+                            <a class="dropdown-item" href="http://127.0.0.1:8000/en/">English</a>
+                            <a class="dropdown-item" href="http://127.0.0.1:8000/es/">Español</a>
+
                             {% if is_granted("IS_AUTHENTICATED_FULLY") %}
                                 <a class="dropdown-item"
                                    href="{{ path('funnytrip_change_theme') }}">{{ 'Changer Thème'|trans }}</a>
@@ -89,8 +89,6 @@
                         </div>
                     </li>
                 </ul>
-
-
             </div>
         </nav>
         <div>
