@@ -59,7 +59,7 @@
                     </button>
                 </form>
             </div>
-        {% elseif is_granted("IS_AUTHENTICATED_FULLY") and nb_places == 0 %}
+        {% elseif is_granted("IS_AUTHENTICATED_FULLY") and not mine and nb_places == 0 %}
 
             <div class="col-md-5">
                 <a class="btn btn-default" href="{{ path('annonce') }}">
@@ -80,6 +80,7 @@
                     <small>{{ '(Identifiez vous !)'|trans }}</small>
                 </a></div>
         {% endif %}
+
         <div class="col-md-4">
             <p><strong>{{ "Nombre de places restantes"|trans }} : </strong><h6>{{ nb_places }} {{ 'place(s)'|trans }}</h6></p>
         </div>

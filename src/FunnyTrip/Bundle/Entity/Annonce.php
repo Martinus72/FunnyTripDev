@@ -332,21 +332,44 @@ class Annonce implements ItemInterface
   }
 
 
+  /**
+   * Get Title for feed
+   *
+   * @return integer
+   */
   public function getFeedItemTitle()
   {
     return $this->villeDepart." -> ".$this->villeArrivee;
   }
 
+
+  /**
+   * Get Description for feed
+   *
+   * @return integer
+   */
   public function getFeedItemDescription()
   {
     return $this->description;
   }
 
+
+  /**
+   * Get Date for feed
+   *
+   * @return integer
+   */
   public function getFeedItemPubDate()
   {
     return $this->date;
   }
 
+
+  /**
+   * Get Link for feed
+   *
+   * @return integer
+   */
   public function getFeedItemLink()
   {
     return "http://127.0.0.1:8000/fr/annonce/" . $this->id;

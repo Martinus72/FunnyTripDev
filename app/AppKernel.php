@@ -25,15 +25,11 @@ class AppKernel extends Kernel
       new Petkopara\MultiSearchBundle\PetkoparaMultiSearchBundle(),
       new Petkopara\CrudGeneratorBundle\PetkoparaCrudGeneratorBundle(),
 
-      // Bundle Maps
-      new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
-      new Ivory\SerializerBundle\IvorySerializerBundle(),
-
-      //Bundle User
+      // Bundle User
       new FOS\UserBundle\FOSUserBundle(),
       new UserBundle\UserBundle(),
 
-      //Bundle RSS
+      // Bundle RSS
       new Eko\FeedBundle\EkoFeedBundle(),
     );
 
