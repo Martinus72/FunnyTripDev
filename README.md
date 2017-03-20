@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-You must download and install a minimum version of [PHP 5.3.9](https://secure.php.net/manual/fr/install.php)
+You must download and install [PHP](https://secure.php.net/manual/fr/install.php) (minimum PHP 5.3.9 version)
 
 You must download and install [Symfony2](https://symfony.com/doc/2.8/setup.html)
 
@@ -17,18 +17,26 @@ You must download and install [Composer](https://getcomposer.org/download/)
 
 ### Installing
 
-Install and Configure with Composer (in FunnyTripDev/)
+Download ZIP or Clone the FunnyTrip Project
 
+```bash
+$ git clone https://github.com/Martinus72/FunnyTripDev.git
 ```
-composer install
+
+Install and Configure with Composer
+
+```bash
+$ cd FunnyTripDev/
+$ composer install
 ```
 
 ## Running
 
-Run the server (in FunnyTripDev/)
+Run the server
 
-```
-php app/console server:run
+```bash
+$ cd FunnyTripDev/
+$ php app/console server:run
 ```
 
 Now you can access to your [localhost:8000](http://localhost:8000) and Enjoy !
