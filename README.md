@@ -17,9 +17,9 @@ You must download and install [Composer](https://getcomposer.org/download/)
 
 ### Installing
 
-Firstly, create a new database named "FunnyTrip" for example. It's important because Composer will ask your database name.
+*Notice:* Create a new database named "FunnyTrip" for example. It's important because Composer will ask your database name.
 
-After, download ZIP or clone the FunnyTrip Project
+Download ZIP or clone the FunnyTrip Project
 
 ```bash
 $ git clone https://github.com/Martinus72/FunnyTripDev.git
