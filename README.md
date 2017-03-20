@@ -41,7 +41,7 @@ $ cd FunnyTripDev/
 $ php app/console server:run
 ```
 
-Now you can access to your [localhost:8000](http://localhost:8000) and Enjoy !
+Now you can access to your [127.0.0.1:8000](http://127.0.0.1:8000) and Enjoy !
 
 ## Built With
 
